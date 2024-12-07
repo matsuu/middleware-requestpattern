@@ -1,10 +1,10 @@
 function headersToObj(headers) {
   return headers.reduce(function (acc, header) {
     var k = header[0], v = header[1];
-    if (!acc[k]) {
-      acc[k] = [];
+    if (k != "X-Request-Pattern") {
+      acc[k] = acc[k] || [];
+      acc[k].push(v);
     }
-    acc[k].push(v);
     return acc;
   }, {});
 }
